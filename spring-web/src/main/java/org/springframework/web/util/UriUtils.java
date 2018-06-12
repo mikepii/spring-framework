@@ -230,6 +230,16 @@ public abstract class UriUtils {
 	}
 
 	/**
+	 * Encode the given URI query parameter with the given encoding, including sub-delims.
+	 * @param queryParam the query parameter to be encoded
+	 * @param encoding the character encoding to encode to
+	 * @return the encoded query parameter
+	 */
+	public static String encodeQueryParamSafe(String queryParam, String encoding) {
+		return encode(queryParam, encoding, HierarchicalUriComponents.Type.QUERY_PARAM_SAFE);
+	}
+
+	/**
 	 * Encode the given URI query parameter with the given encoding.
 	 * @param queryParam the query parameter to be encoded
 	 * @param charset the character encoding to encode to
@@ -238,6 +248,17 @@ public abstract class UriUtils {
 	 */
 	public static String encodeQueryParam(String queryParam, Charset charset) {
 		return encode(queryParam, charset, HierarchicalUriComponents.Type.QUERY_PARAM);
+	}
+
+	/**
+	 * Encode the given URI query parameter with the given encoding, including sub-delims.
+	 * @param queryParam the query parameter to be encoded
+	 * @param charset the character encoding to encode to
+	 * @return the encoded query parameter
+	 * @since 5.0
+	 */
+	public static String encodeQueryParamSafe(String queryParam, Charset charset) {
+		return encode(queryParam, charset, HierarchicalUriComponents.Type.QUERY_PARAM_SAFE);
 	}
 
 	/**

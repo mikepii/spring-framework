@@ -83,6 +83,17 @@ public class UriUtilsTests {
 		assertEquals("Invalid encoded result", "foobar", UriUtils.encodeQueryParam("foobar", CHARSET));
 		assertEquals("Invalid encoded result", "foo%20bar", UriUtils.encodeQueryParam("foo bar", CHARSET));
 		assertEquals("Invalid encoded result", "foo%26bar", UriUtils.encodeQueryParam("foo&bar", CHARSET));
+		assertEquals("Invalid encoded result", "foo+bar", UriUtils.encodeQueryParam("foo+bar", CHARSET));
+		assertEquals("Invalid encoded result", "foo;bar", UriUtils.encodeQueryParam("foo;bar", CHARSET));
+	}
+
+	@Test
+	public void encodeQueryParamSafe() throws UnsupportedEncodingException {
+		assertEquals("Invalid encoded result", "foobar", UriUtils.encodeQueryParamSafe("foobar", CHARSET));
+		assertEquals("Invalid encoded result", "foo%20bar", UriUtils.encodeQueryParamSafe("foo bar", CHARSET));
+		assertEquals("Invalid encoded result", "foo%26bar", UriUtils.encodeQueryParamSafe("foo&bar", CHARSET));
+		assertEquals("Invalid encoded result", "foo%2Bbar", UriUtils.encodeQueryParamSafe("foo+bar", CHARSET));
+		assertEquals("Invalid encoded result", "foo%3Bbar", UriUtils.encodeQueryParamSafe("foo;bar", CHARSET));
 	}
 
 	@Test

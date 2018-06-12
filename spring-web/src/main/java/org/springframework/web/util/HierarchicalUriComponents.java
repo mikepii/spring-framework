@@ -566,6 +566,17 @@ final class HierarchicalUriComponents extends UriComponents {
 				}
 			}
 		},
+		QUERY_PARAM_SAFE {
+			@Override
+			public boolean isAllowed(int c) {
+				if (isSubDelimiter(c)) {
+					return false;
+				}
+				else {
+					return isPchar(c) || '/' == c || '?' == c;
+				}
+			}
+		},
 		FRAGMENT {
 			@Override
 			public boolean isAllowed(int c) {
